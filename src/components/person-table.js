@@ -15,7 +15,7 @@ const PersonTable = ({persons}) => {
   })
 
   return (
-    <Table striped bordered responsive>
+    <Table striped bordered>
       <thead>
         <tr>
           <th scope="col">#</th>

@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import PersonTable from './components/person-table';
 import Toolbar from './components/toolbar';
-import {Container, Stack } from 'react-bootstrap';
+import { Container, Stack } from '@mui/material';
 
 faker.locale = 'de';
 
@@ -27,13 +27,11 @@ function App() {
   ]
 
   return (
-    <Container>
-<Stack gap={3} className="mt-3">
-<Toolbar />
-      <PersonTable persons={persons} />
-</Stack>
-
-
+    <Container maxWidth="lg">
+      <Stack alignItems="center" spacing={2} mt={2}>
+        <Toolbar />
+        <PersonTable persons={persons} />
+      </Stack>
     </Container>
 
   );

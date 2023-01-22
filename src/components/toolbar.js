@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Stack } from 'react-bootstrap';
+import { Stack, Divider } from '@mui/material';
 
 import DropdownLang from './toolbar/dropdown-lang';
 import ControlsValueError from './toolbar/controls-value-error';
@@ -30,9 +30,21 @@ const Toolbar = () => {
   }
 
   return (
-    <Stack direction="horizontal" gap={5}>
-      <DropdownLang lang={lang} handleChange={handleChange} />
-      <ControlsValueError valueError={valueError} handleChange={handleChange}/>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      alignItems="center"
+      justifyContent="space-between"
+      spacing={{ xs: 1, sm: 5 }}
+      divider={<Divider orientation="vertical" flexItem />}
+    >
+      <DropdownLang
+        lang={lang}
+        handleChange={handleChange}
+      />
+      <ControlsValueError
+        valueError={valueError}
+        handleChange={handleChange}
+      />
       <ControlsSeed />
     </Stack>
   )
