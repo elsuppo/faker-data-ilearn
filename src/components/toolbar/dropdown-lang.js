@@ -4,7 +4,7 @@ const DropdownLang = ({ lang, handleChange }) => {
 
   return (
     <Stack alignItems="flex-start">
-      Language
+      Region
       <FormControl>
         <Select
           value={lang}
@@ -12,11 +12,11 @@ const DropdownLang = ({ lang, handleChange }) => {
           onChange={handleChange}
           style={{ width: '120px' }}
         >
-          <MenuItem value={'en'}>English</MenuItem>
-          <MenuItem value={'de'}>German</MenuItem>
-          <MenuItem value={'es'}>Spanish</MenuItem>
-          <MenuItem value={'ge'}>Georgian</MenuItem>
-          <MenuItem value={'ru'}>Russian</MenuItem>
+          <MenuItem value={'en'}>USA</MenuItem>
+          <MenuItem value={'de'}>Germany</MenuItem>
+          <MenuItem value={'es'}>Spain</MenuItem>
+          <MenuItem value={'ge'}>Georgia</MenuItem>
+          <MenuItem value={'ru'}>Russia</MenuItem>
         </Select>
       </FormControl>
     </Stack>

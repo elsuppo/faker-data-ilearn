@@ -6,7 +6,7 @@ const createRandomPerson = (i, lang) => {
 
   const name = lang === 'ge' ? `${faker.name.firstName()} ${faker.name.lastName()}` : `${faker.name.fullName()}`;
 
-  const baseAddress = `${faker.address.city()}, ${faker.address.streetName()}, ${faker.address.buildingNumber()}, ${faker.address.secondaryAddress()}`
+  const baseAddress = `${faker.address.city()}, ${faker.address.street()}, ${faker.address.buildingNumber()}, ${faker.address.secondaryAddress()}`
   const address = lang === 'ge' ? baseAddress : `${faker.address.state()}, ${baseAddress}`
 
   const basePhone = faker.phone.number();

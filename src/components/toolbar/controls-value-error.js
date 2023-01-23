@@ -11,7 +11,7 @@ const ControlsValueError = ({ valueError, handleChange }) => {
       >
         <Slider
           min={0}
-          step={0.1}
+          step={0.25}
           max={10}
           name="valueError"
           value={valueError}
