@@ -22,8 +22,8 @@ const ControlsSeed = ({seed, setSeed, handleChange}) => {
             onChange={handleChange}
           />
           <Button
-            variant="outlined" 
-            color="inherit"
+            variant="contained" 
+            color="primary"
             sx={{marginLeft: 2}}
             onClick={onSetSeed}>Random</Button>
         </FormGroup>

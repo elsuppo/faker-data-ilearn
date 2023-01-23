@@ -17,7 +17,7 @@ const ControlsValueError = ({ valueError, handleChange }) => {
           value={valueError}
           onChange={handleChange}
           valueLabelDisplay="auto"
-          style={{ width: '150px', color: '#000' }}
+          style={{ width: '150px' }}
         />
 
         <TextField
