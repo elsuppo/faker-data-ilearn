@@ -21,10 +21,10 @@ const createRandomPerson = (i, lang) => {
   };
 }
 
-const getData = (seed, lang, prevData) => {
+const getData = (seed, lang, prevData, personCount) => {
   faker.locale = lang;
   faker.seed(seed);
-  for (let i = 1; i < 21; i++) {
+  for (let i = 1; i <= personCount; i++) {
     const person = createRandomPerson(i, lang);
     prevData = [...prevData, person];
   }

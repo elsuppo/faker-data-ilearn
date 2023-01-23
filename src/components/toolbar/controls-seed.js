@@ -5,7 +5,6 @@ const ControlsSeed = ({seed, setSeed, handleChange}) => {
   const onSetSeed = (event) => {
     event.preventDefault();
     setSeed(Math.floor(Math.random() * 1000000));
-    console.log(seed);
   }
 
   return (
