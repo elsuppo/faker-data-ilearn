@@ -1,39 +1,46 @@
-import { faker } from '@faker-js/faker';
+import { useState, useEffect } from 'react';
+
 
 import PersonTable from './components/person-table';
-import Toolbar from './components/toolbar';
+import Toolbar from './components/toolbar/toolbar';
 import { Container, Stack } from '@mui/material';
 
-faker.locale = 'de';
+import getLocalStorage from './services/getLocalStorage';
+import updateLocalStorage from './services/updateLocalStorage';
+import getData from './services/getData';
 
 function App() {
 
-  // test object
-  const persons = [
-    {
-      number: 1,
-      id: 1,
-      name: 'Andrew',
-      address: 'Batumi',
-      phone: '123'
-    },
-    {
-      number: 2,
-      id: 2,
-      name: 'Andrew',
-      address: 'Erevan',
-      phone: '456'
-    },
-  ]
+  const { initialLang, initialValueError, initialSeed } = getLocalStorage();
+
+  const [lang, setLang] = useState(initialLang);
+  const [valueError, setValueError] = useState(+initialValueError);
+  const [seed, setSeed] = useState(+initialSeed);
+  // let [persons, setPersons] = useState([]);
+
+  useEffect(() => {
+    updateLocalStorage(lang, seed, valueError);
+    console.log('effect', seed, lang);
+  }, [lang, seed, valueError])
+
+  let persons = [];
+  persons = getData(seed, lang, persons);
 
   return (
     <Container maxWidth="lg">
       <Stack alignItems="center" spacing={2} mt={2}>
-        <Toolbar />
-        <PersonTable persons={persons} />
+        <Toolbar
+          lang={lang}
+          valueError={valueError}
+          seed={seed}
+          setLang={setLang}
+          setValueError={setValueError}
+          setSeed={setSeed} />
+        <PersonTable
+          lang={lang}
+          persons={persons} />
       </Stack>
     </Container>
-
   );
 }
 

@@ -1,21 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Stack, Divider } from '@mui/material';
 
-import DropdownLang from './toolbar/dropdown-lang';
-import ControlsValueError from './toolbar/controls-value-error';
-import ControlsSeed from './toolbar/controls-seed';
+import DropdownLang from './dropdown-lang';
+import ControlsValueError from './controls-value-error';
+import ControlsSeed from './controls-seed';
 
-const Toolbar = () => {
-  const initialLang = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en';
-  const initialValueError = localStorage.getItem('valueError') ? localStorage.getItem('valueError') : 0;
-
-  const [lang, setLang] = useState(initialLang),
-    [valueError, setValueError] = useState(initialValueError);
-
-  useEffect(() => {
-    localStorage.setItem('lang', lang);
-    localStorage.setItem('valueError', valueError);
-  }, [lang, valueError]);
+const Toolbar = ({lang, valueError, setLang, setValueError, seed, setSeed}) => {
 
   const handleChange = (event) => {
     switch (event.target.name) {
@@ -25,6 +14,8 @@ const Toolbar = () => {
       case 'valueError':
         event.target.value > 1000 ? setValueError(1000) : setValueError(event.target.value);
         break;
+      case 'valueSeed':
+        setSeed(+event.target.value);
       // no default
     }
   }
@@ -45,7 +36,10 @@ const Toolbar = () => {
         valueError={valueError}
         handleChange={handleChange}
       />
-      <ControlsSeed />
+      <ControlsSeed
+        seed={seed}
+        setSeed={setSeed}
+        handleChange={handleChange}/>
     </Stack>
   )
 }
