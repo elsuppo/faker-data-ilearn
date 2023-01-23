@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-
+import { Container, Stack } from '@mui/material';
 
 import PersonTable from './components/person-table';
 import Toolbar from './components/toolbar/toolbar';
-import { Container, Stack } from '@mui/material';
+import Footer from './components/footer';
 
 import getLocalStorage from './services/getLocalStorage';
 import updateLocalStorage from './services/updateLocalStorage';
@@ -29,7 +29,7 @@ function App() {
         setPersonCount((prevCount) => prevCount + 10)
       }
     });
-    
+
   }, [lang, seed, valueError])
 
   let persons = [];
@@ -49,7 +49,9 @@ function App() {
           lang={lang}
           persons={persons} />
       </Stack>
+      <Footer persons={persons}/>
     </Container>
+
   );
 }
 
