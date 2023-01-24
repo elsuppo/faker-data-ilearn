@@ -1,9 +1,9 @@
-const PersonTableRow = ({number, id, name, address, phone }) => {
+const PersonTableRow = ({number, personId, name, address, phone }) => {
 
   return (
     <tr>
       <td>{number}</td>
-      <td>{id}</td>
+      <td>{personId}</td>
       <td>{name}</td>
       <td>{address}</td>
       <td>{phone}</td>

@@ -12,7 +12,7 @@ const Toolbar = ({lang, valueError, setLang, setValueError, seed, setSeed}) => {
         setLang(event.target.value);
         break;
       case 'valueError':
-        event.target.value > 1000 ? setValueError(1000) : setValueError(event.target.value);
+        event.target.value > 1000 ? setValueError(1000) : setValueError(+event.target.value);
         break;
       case 'valueSeed':
         setSeed(+event.target.value);

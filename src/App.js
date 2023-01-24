@@ -33,7 +33,7 @@ function App() {
   }, [lang, seed, valueError])
 
   let persons = [];
-  persons = getData(seed, lang, persons, personCount);
+  persons = getData(seed, lang, persons, personCount, valueError);
 
   return (
     <Container maxWidth="lg">

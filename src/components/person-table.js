@@ -5,10 +5,10 @@ import PersonTableRow from './person-table-row';
 const PersonTable = ({persons}) => {
 
   const personTableRows = persons.map(person => {
-    const { id } = person;
+    const { number } = person;
     return (
       <PersonTableRow
-        key={id}
+        key={number}
         {...person}
       />
     )

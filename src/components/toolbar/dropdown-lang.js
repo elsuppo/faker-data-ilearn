@@ -15,7 +15,6 @@ const DropdownLang = ({ lang, handleChange }) => {
           <MenuItem value={'en'}>USA</MenuItem>
           <MenuItem value={'de'}>Germany</MenuItem>
           <MenuItem value={'es'}>Spain</MenuItem>
-          <MenuItem value={'ge'}>Georgia</MenuItem>
           <MenuItem value={'ru'}>Russia</MenuItem>
         </Select>
       </FormControl>

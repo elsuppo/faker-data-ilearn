@@ -1,35 +1,23 @@
 import { faker } from '@faker-js/faker';
 
-const createRandomPerson = (i, lang) => {
-  
-  const passportId = `${faker.random.alpha({ count: 2, casing: 'upper' })}${faker.datatype.number({ min: 1000000, max: 9999999 })}`;
+import createRandomPerson from './createRandomPerson';
+import getMistake from './getMistake';
 
-  const name = lang === 'ge' ? `${faker.name.firstName()} ${faker.name.lastName()}` : `${faker.name.fullName()}`;
-
-  const baseAddress = `${faker.address.city()}, ${faker.address.street()}, ${faker.address.buildingNumber()}, ${faker.address.secondaryAddress()}`
-  const address = lang === 'ge' ? baseAddress : `${faker.address.state()}, ${baseAddress}`
-
-  const basePhone = faker.phone.number();
-  const phone = basePhone.indexOf('x') === -1 ? basePhone : basePhone.slice(0, basePhone.indexOf('x'))
-
-  return {
-    number: i,
-    id: passportId,
-    name: name,
-    address: address,
-    phone: phone
-  };
-}
-
-const getData = (seed, lang, prevData, personCount) => {
+const getData = (seed, lang, persons, personCount, valueError) => {
   faker.locale = lang;
   faker.seed(seed);
+
   for (let i = 1; i <= personCount; i++) {
-    const person = createRandomPerson(i, lang);
-    prevData = [...prevData, person];
+    const person = createRandomPerson(i);
+    persons = [...persons, person];
   }
-  
-  return prevData;
+
+    const maybeMistake = faker.helpers.maybe(() => true, { probability: valueError });
+
+  if (maybeMistake) {
+    return persons.map(person => getMistake(valueError, person))
+    }
+  return persons;
 }
 
 export default getData;
